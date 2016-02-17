@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>title</key>
+		<string></string>
+		<key>note</key>
+		<string>This is a test example. We are testing how this works. There is no backend yet. This is all static data. @TilTheDayIDieByTobyMacAndNF</string>
+		<key>type</key>
+		<string>voice</string>
+		<key>voice</key>
+		<string>01</string>
+        <key>audio</key>
+        <string>my_audio.wav</string>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>Has Title</string>
+		<key>note</key>
+		<string>This is a test example. We are testing how this works. There is no backend yet. This is all static data. @TilTheDayIDieByTobyMacAndNF</string>
+		<key>type</key>
+		<string>voice</string>
+		<key>voice</key>
+		<string>02</string>
+        <key>audio</key>
+        <string>my_audio.wav</string>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string></string>
+		<key>note</key>
+		<string>This is a test example. We are testing how this works. There is no backend yet. This is all static data. @TilTheDayIDieByTobyMacAndNF</string>
+		<key>type</key>
+		<string>voice</string>
+		<key>voice</key>
+		<string>03</string>
+        <key>audio</key>
+        <string>my_audio.wav</string>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>My voice</string>
+		<key>note</key>
+		<string>This is a test example. We are testing how this works. There is no backend yet. This is all static data. @TilTheDayIDieByTobyMacAndNF</string>
+		<key>type</key>
+		<string>voice</string>
+		<key>voice</key>
+		<string>04</string>
+        <key>audio</key>
+        <string>my_audio.wav</string>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>Awesome</string>
+		<key>note</key>
+		<string>This is a test example. We are testing how this works. There is no backend yet. This is all static data. @TilTheDayIDieByTobyMacAndNF</string>
+		<key>type</key>
+		<string>voice</string>
+		<key>voice</key>
+		<string>05</string>
+        <key>audio</key>
+        <string>my_audio.wav</string>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string></string>
+		<key>note</key>
+		<string>This is a test example. We are testing how this works. There is no backend yet. This is all static data. @TilTheDayIDieByTobyMacAndNF</string>
+		<key>type</key>
+		<string>voice</string>
+		<key>voice</key>
+		<string>06</string>
+        <key>audio</key>
+        <string>my_audio.wav</string>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>No song</string>
+		<key>note</key>
+		<string>This is a test example. We are testing how this works. There is no backend yet. This is all static data.</string>
+		<key>type</key>
+		<string>voice</string>
+		<key>voice</key>
+		<string>07</string>
+        <key>audio</key>
+        <string>my_audio.wav</string>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>Mary had a little lamb you heard</string>
+		<key>note</key>
+		<string>Mary had a little lamb, little lamb, it was fun to watch, hehe. Dah dah</string>
+		<key>type</key>
+		<string>book</string>
+		<key>voice</key>
+		<string>08</string>
+        <key>audio</key>
+        <string>my_audio.wav</string>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string></string>
+		<key>note</key>
+		<string>This is a test example. We are testing how this works. There is no backend yet. This is all static data. @TilTheDayIDieByTobyMacAndNF</string>
+		<key>type</key>
+		<string>voice</string>
+		<key>voice</key>
+		<string>09</string>
+        <key>audio</key>
+        <string>my_audio.wav</string>
+	</dict>
+</array>
+</plist>

@@ -1,0 +1,17 @@
+source 'https://github.com/CocoaPods/Specs.git'
+platform :ios, '8.0'
+use_frameworks!
+ 
+target 'Box' do
+    pod 'Alamofire'
+    pod 'SwiftyJSON'
+    pod 'Parse'
+end
+          
+target 'Box' do
+           
+end
+            
+target 'Box' do
+             
+end
