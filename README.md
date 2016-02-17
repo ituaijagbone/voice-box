@@ -5,3 +5,33 @@ Parse serves as my backend for data storage while it last. :)
 
 One more feature to be added is sending the audio to Clarify where it is indexed for searching. Clarify makes it possible to search our voice notes.
 
+###### App Home View 
+![alt tag](https://github.com/ituaijagbone/voice-box/blob/github/app/Box/assets/main_page.png)
+
+
+###### Horizontal Orientation 
+![alt tag](https://github.com/ituaijagbone/voice-box/blob/github/app/Box/assets/main_page_horizontal_orientation.png)
+
+
+###### Record Voice 
+![alt tag](https://github.com/ituaijagbone/voice-box/blob/github/app/Box/assets/record_voice.png)
+
+###### Playing Audio on Main Home View 
+![alt tag](https://github.com/ituaijagbone/voice-box/blob/github/app/Box/assets/playing_audio_from_main_page.png)
+
+
+###### Note View 
+![alt tag](https://github.com/ituaijagbone/voice-box/blob/github/app/Box/assets/note_view_of_transcribed_audio.png)
+
+
+###### Playing Audio and reading Note 
+![alt tag](https://github.com/ituaijagbone/voice-box/blob/github/app/Box/assets/playing_audio.png)
+
+###### Search Spotify by clicking Hashtag 
+![alt tag](https://github.com/ituaijagbone/voice-box/blob/github/app/Box/assets/search_spotify.png)
+
+###### Spotify login 
+![alt tag](https://github.com/ituaijagbone/voice-box/blob/github/app/Box/assets/spotify_login.png)
+
+###### Spotify Search Result 
+![alt tag](https://github.com/ituaijagbone/voice-box/blob/github/app/Box/assets/search_result.png)
