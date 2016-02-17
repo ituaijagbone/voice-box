@@ -15,18 +15,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     let themeColor = UIColor(red: 0.01, green: 0.41, blue: 0.22, alpha: 1.0)
-    
+
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         // window?.tintColor = themeColor
-        
+
         // Enable parse local store and initialize app
         Parse.enableLocalDatastore()
-        Parse.setApplicationId("kO2843smPqN66RDzqSb3BfgOMs91sJL07O7ndaks", clientKey: "GnEMUkYGAP5ZCNNxvV1k1hTObuPzt6tURxgMUuqs")
+        Parse.setApplicationId("PARSE_APPLICATION_ID", clientKey: "PARSE_CLIENT_KEY")
         PFAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
-        
+
 //        Voice.exportVoices()
-        
+
         return true
     }
 
@@ -54,4 +54,3 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
 }
-

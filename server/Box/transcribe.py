@@ -11,11 +11,11 @@ import os
 
 from evernote.api.client import EvernoteClient
 
-WIT_AI_KEY = "Q2DIPNXDSFONVA7NO4G363RDKZP5XD3C"  # Wit.ai key
-IBM_USERNAME = "6501f0a1-2038-4da9-8646-1ca8fc9fd8a7"  # IBM Speech to Text username
-IBM_PASSWORD = "APPQZUcylzG7"  # IBM Speech to Text password
-EVERNOTE_TOKEN = "S=s1:U=91d86:E=15924f9e101:C=151cd48b140:P=1cd:A=en-devtoken:V=2:H=d4ec01bb0cd49296d3b1f0d60f8d7979"
-DROPBOX_TOKEN = "Cd7EqJCbv_MAAAAAAAAUQdD0MWNTSKDQWeWc-V-WRuPZFXjMizuAtLvODjHuZpVC"
+WIT_AI_KEY = ""  # Wit.ai key
+IBM_USERNAME = ""  # IBM Speech to Text username
+IBM_PASSWORD = ""  # IBM Speech to Text password
+EVERNOTE_TOKEN = "" # Evernote Token
+DROPBOX_TOKEN = "" # Dropbox Token
 
 # speech recognizer
 r = sr.Recognizer()
@@ -41,7 +41,7 @@ def speech_to_text(filename):
     :return: transcribed text
     """
     wav_file = os.path.join(os.path.realpath(STORAGE_PATH), filename)
-
+    note = ""
     # use filename as audio source
     with sr.WavFile(wav_file) as source:
         audio = r.record(source)  # read the entire WAV file
@@ -58,7 +58,8 @@ def speech_to_text(filename):
 
     # recognize speech using WIT.ai Recognition
     try:
-        print("WIT.ai " + r.recognize_wit(audio, key=WIT_AI_KEY))
+        note = r.recognize_wit(audio, key=WIT_AI_KEY)
+        print ("WIT AI " + note)
     except sr.UnknownValueError:
         print("WIT.ai could not understand audio")
         return 1, "WIT.ai could not understand audio"
@@ -68,17 +69,16 @@ def speech_to_text(filename):
 
     # recognize speech using IBM Watson
     try:
-        note = r.recognize_ibm(audio, username=IBM_USERNAME, password=IBM_PASSWORD)
-        print("IBM Watson " + note)
-        return 0, note
+        note_2 = r.recognize_ibm(audio, username=IBM_USERNAME, password=IBM_PASSWORD)
+        print("IBM Watson " + note_2)
     except sr.UnknownValueError:
         print("IBM Watson could not understand audio")
         return 1, "IBM Watson could not understand audio"
     except sr.RequestError as e:
         print("Could not request from IBM Watson service {0}".format(e))
         return 2, "Could not request from IBM Watson service {0}".format(e)
-
-
+    return 0, note
+    
 def trans(x):
     """
     Transform first character of string to uppercase

@@ -12,20 +12,20 @@ class SpotifyViewController: UITableViewController {
 
     var query:String!
     var tracks = [SPTPartialTrack]()
-    
-    let kClientID = "fc024a4fcb4b4f19bcf223c4483312c1"
-    let kCallbackURL = "voice-box://"
+
+    let kClientID = "CLIENT_ID"
+    let kCallbackURL = "CALLBACK_URL"
     let kTokenSwapURL = "http://localhost:1234/swap"
     let kTokenRefreshURL = "http://localhost:1234/refresh"
     let kSessionObjectDefaultsKey = "kSessionObjectDefaultsKey"
-    
+
     var player: SPTAudioStreamingController?
     let spotifyAuthenticator = SPTAuth.defaultInstance()
     var session: SPTSession?
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         if isAuthenticated() {
             loginToSpotify()
         } else {
@@ -54,7 +54,7 @@ class SpotifyViewController: UITableViewController {
         if let player = self.player {
             player.stop(nil)
         }
-        
+
     }
 
     @IBAction func closeSpotify(sender: AnyObject) {
@@ -64,7 +64,7 @@ class SpotifyViewController: UITableViewController {
         }
         dismissViewControllerAnimated(true, completion: nil)
     }
-    
+
     func showPrompt(message: String) {
         let actionAlert = UIAlertController(title: "Alert", message: message, preferredStyle: .Alert)
         let dismissHandler = {
@@ -74,7 +74,7 @@ class SpotifyViewController: UITableViewController {
         actionAlert.addAction(UIAlertAction(title: "OK", style: .Default, handler: dismissHandler))
         presentViewController(actionAlert, animated: true, completion: nil)
     }
-    
+
     func isAuthenticated() -> Bool {
         if let data: AnyObject = NSUserDefaults.standardUserDefaults().objectForKey(kSessionObjectDefaultsKey) {
             session = NSKeyedUnarchiver.unarchiveObjectWithData(data as! NSData) as? SPTSession
@@ -84,29 +84,29 @@ class SpotifyViewController: UITableViewController {
         }
         return false
     }
-    
+
     func spotifyAuth() {
         self.spotifyAuthenticator.clientID = self.kClientID
         self.spotifyAuthenticator.requestedScopes = [SPTAuthStreamingScope]
         self.spotifyAuthenticator.redirectURL = NSURL(string: self.kCallbackURL)
         self.spotifyAuthenticator.tokenSwapURL = NSURL(string: self.kTokenSwapURL)
         self.spotifyAuthenticator.tokenRefreshURL = NSURL(string: self.kTokenRefreshURL)
-        
+
         let spotifyAuthenticationViewController = SPTAuthViewController.authenticationViewController()
         spotifyAuthenticationViewController.delegate = self
         spotifyAuthenticationViewController.modalPresentationStyle = .OverCurrentContext
         spotifyAuthenticationViewController.definesPresentationContext = true
         self.presentViewController(spotifyAuthenticationViewController, animated: false, completion: nil)
     }
-    
+
     func loginToSpotify() {
         setupSpotifyPlayer()
         loginWithSpotifySession(self.session!)
     }
-    
+
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
-        
+
         // Configure the cell...
         let partialTrack = tracks[indexPath.row]
         var artists = ""
@@ -122,7 +122,7 @@ class SpotifyViewController: UITableViewController {
         cell.detailTextLabel?.text = artists
         return cell
     }
-    
+
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if let player = self.player {
             player.stop(nil)
@@ -142,7 +142,7 @@ extension SpotifyViewController: SPTAuthViewDelegate {
     func authenticationViewController(authenticationViewController: SPTAuthViewController!, didFailToLogin error: NSError!) {
         showPrompt("Login failed")
     }
-    
+
     func authenticationViewController(authenticationViewController: SPTAuthViewController!, didLoginWithSession session: SPTSession!) {
         let sessionData = NSKeyedArchiver.archivedDataWithRootObject(session)
         NSUserDefaults.standardUserDefaults().setObject(sessionData, forKey: kSessionObjectDefaultsKey)
@@ -150,11 +150,11 @@ extension SpotifyViewController: SPTAuthViewDelegate {
         self.session = session
         loginToSpotify()
     }
-    
+
     func authenticationViewControllerDidCancelLogin(authenticationViewController: SPTAuthViewController!) {
         showPrompt("login canceled")
     }
-    
+
 }
 
 extension SpotifyViewController: SPTAudioStreamingPlaybackDelegate {
@@ -163,7 +163,7 @@ extension SpotifyViewController: SPTAudioStreamingPlaybackDelegate {
         player!.playbackDelegate = self
         player!.diskCache = SPTDiskCache(capacity: 1024 * 1024 * 64)
     }
-    
+
     func loginWithSpotifySession(session: SPTSession) {
         player?.loginWithSession(session, callback: { (error: NSError!) in
             if error != nil {
@@ -173,14 +173,14 @@ extension SpotifyViewController: SPTAudioStreamingPlaybackDelegate {
         })
         self.useLoggedInPermissions()
     }
-    
+
     func useLoggedInPermissions() {
         SPTSearch.performSearchWithQuery(self.query, queryType: SPTSearchQueryType.QueryTypeTrack, offset:3 as NSInteger, accessToken: nil, callback: { (error, result) in
             if error != nil {
                 self.showPrompt("Can't find song \(error)")
                 return
             }
-            
+
             if let list = result as? SPTListPage {
                 if list.items == nil {
                     self.showPrompt("Can't find song")

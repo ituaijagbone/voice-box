@@ -10,20 +10,20 @@ import Foundation
 import AVFoundation
 
 class BoxUtility {
-    
+
     class func getAudioURL(filename filename: String) -> NSURL?{
         let directoryPath = getDocumentDirectory()
         let pathArray = [directoryPath, filename]
         let filePath = NSURL.fileURLWithPathComponents(pathArray)
         return filePath
     }
-    
+
     class func getDocumentDirectory() -> String {
         let path = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
         let documentDirectory = path[0]
         return documentDirectory
     }
-    
+
     class func setupAudioPlayerWithNSURL(recordedAudioUrl: NSURL) -> AVAudioPlayer? {
         do {
             let audioPlayer = try AVAudioPlayer(contentsOfURL: recordedAudioUrl)
@@ -33,7 +33,7 @@ class BoxUtility {
             return nil
         }
     }
-    
+
     class func getHostURL() -> String {
         return "http://localhost:2000"
     }
